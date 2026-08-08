@@ -1,11 +1,6 @@
-#include <stdio.h>
+#include <math.h>
 
-float espaco(float v, float t, float a, int tem_aceleracao) {
-    if (tem_aceleracao == 1) {
-        
-        return (v * t) + (a * (t * t)) / 2;
-    } else {
-        
-        return v * t;
-    }
+double espacopelotempo(double velocidade, double tempo, double aceleracao)
+{
+	return velocidade * tempo + (aceleracao*pow(tempo, 2)/2);
 }
