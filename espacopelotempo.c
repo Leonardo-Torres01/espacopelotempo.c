@@ -1,31 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "function_espacopelotempo.c"
 
-int main() 
+int main(int argc, char const *argv[])
 {
-    float v, t, a = 0;
-    int opcao;
+    FILE *arquivo = fopen("espacopelotempo.txt", "w");
 
-    printf("--- Calculo de Espaco Percorrido ---\n");
-    printf("Digite a velocidade (v): ");
-    scanf("%f", &v);
-    printf("Digite o tempo (t): ");
-    scanf("%f", &t);
-
-    printf("Ha aceleracao? (1 - Sim / 0 - Nao): ");
-    scanf("%d", &opcao);
-
-    if (opcao == 1) 
+	double velocidade = atof(argv[1]);
+    double tempo = atof(argv[2]);
+    double aceleracao = 0;
+	if(argc == 4)
     {
-        printf("Digite o valor da aceleracao (a): ");
-        scanf("%f", &a);
-    }
+		aceleracao = atof(argv[3]);
+	}
+	if(argc > 4 || argc < 3)
+    {
+		printf("digite a palavra "espacopelotempo" seguida de 2 ou 3 argumentos (ex: espacopelotempo 30 2) (ex: espacopelotempo 30 2 3)");
+        printf("\nsendo 40 a velocidade, 2 o tempo, e 3 a aceleracao, esses valores podem ser quaisquer numeros");
 
-    float resultado = espaco(v, t, a, opcao);
-    printf("\nO espaco percorrido e: %.2f\n", resultado);
-
-  
-    printf("Criado por Leonardo Torres");
-
+        fprintf(arquivo, "digite a palavra "espacopelotempo" seguida de 2 ou 3 argumentos (ex: espacopelotempo 30 2) (ex: espacopelotempo 30 2 3)");
+        fprintf(arquivo, "\nsendo 40 a velocidade, 2 o tempo, e 3 a aceleracao, esses valores podem ser quaisquer numeros");
+        return 0;
+	}
+	printf("resultado: %f\n", espacopelotempo(velocidade, tempo, aceleracao));
+	
+    fprintf(arquivo, "resultado: %f\n", espacopelotempo(velocidade, tempo, aceleracao));
+	fprintf(arquivo, "\nFeito por Leonardo Torres");
     return 0;
 }
