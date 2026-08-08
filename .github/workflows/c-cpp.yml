@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: compile
-      run: gcc test_espacopelotempo.c -o test_espacopelotempo
+      run: gcc test_espacopelotempo.c -o test_espacopelotempo 
     - name: execute
       run: ./test_espacopelotempo
